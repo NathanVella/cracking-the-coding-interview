@@ -35,19 +35,18 @@ public class ArraysAndStringsTests {
 
     Assertions.assertFalse(arraysAndStrings.checkPermutation("a", "aa"));
     Assertions.assertFalse(arraysAndStrings.checkPermutation(" ", "a"));
-    Assertions.assertFalse(arraysAndStrings.checkPermutation("nathan", "vellan"));
+    Assertions.assertFalse(arraysAndStrings.checkPermutation("nathan", "vella"));
     Assertions.assertFalse(arraysAndStrings.checkPermutation("nate", "erin"));
   }
 
   @Test
-  @Disabled
-  void urlify() {
+  void replaceSpaces() {
     Assertions.assertEquals("",
-        arraysAndStrings.urlify("", 0));
+        arraysAndStrings.replaceSpaces("", 0));
     Assertions.assertEquals("%20",
-        arraysAndStrings.urlify("   ", 1));
+        arraysAndStrings.replaceSpaces("   ", 1));
     Assertions.assertEquals("Mr%20John%20Smith",
-        arraysAndStrings.urlify("Mr John Smith    ", 13));
+        arraysAndStrings.replaceSpaces("Mr John Smith    ", 13));
   }
 
   @Test
@@ -73,17 +72,20 @@ public class ArraysAndStringsTests {
   }
 
   @Test
+  @Disabled
   void rotateMatrix() {
 
   }
 
   @Test
+  @Disabled
   void zeroMatrix() {
 
   }
 
   @Test
+  @Disabled
   void stringRotation() {
-
+    Assertions.assertTrue(arraysAndStrings.isSubstring("waterbottle", "erbottlewat"));
   }
 }

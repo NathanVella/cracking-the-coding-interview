@@ -89,12 +89,23 @@ public class ArraysAndStrings {
    *
    * EXAMPLE
    * Input:   Tact Coa
-   * Output:  True (permutations: "taco cat", "atco eta", etc.)
+   * Output:  True (permutations: "taco cat", "atco cta", etc.)
    */
   public boolean palindromePermutation(String s) {
 
+
     return true;
   }
+
+//  Map<Character, Integer> map = new HashMap<>();
+//  char[] str = s.toLowerCase().toCharArray();
+//    for(char c : str) {
+//    if (!map.containsKey(c)) {
+//      map.put(c, 1);
+//    } else {
+//      map.put(c, map.get(c) + 1);
+//    }
+//  }
 
   /**
    * One Away

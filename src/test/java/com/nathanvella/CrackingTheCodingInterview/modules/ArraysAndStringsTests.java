@@ -52,7 +52,11 @@ public class ArraysAndStringsTests {
   @Test
   @Disabled
   void palindromePermutation() {
+    Assertions.assertTrue(arraysAndStrings.palindromePermutation(""));
+    Assertions.assertTrue(arraysAndStrings.palindromePermutation(" "));
+    Assertions.assertTrue(arraysAndStrings.palindromePermutation("Taco Cat"));
     Assertions.assertTrue(arraysAndStrings.palindromePermutation("Tact Coa"));
+    Assertions.assertTrue(arraysAndStrings.palindromePermutation("atco cta"));
   }
 
   @Test

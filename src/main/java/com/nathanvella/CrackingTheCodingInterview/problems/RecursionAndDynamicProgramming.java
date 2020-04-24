@@ -1,4 +1,4 @@
-package com.nathanvella.CrackingTheCodingInterview.modules;
+package com.nathanvella.CrackingTheCodingInterview.problems;
 
 public class RecursionAndDynamicProgramming {
 

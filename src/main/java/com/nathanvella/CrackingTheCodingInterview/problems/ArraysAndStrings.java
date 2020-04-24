@@ -1,4 +1,4 @@
-package com.nathanvella.CrackingTheCodingInterview.modules;
+package com.nathanvella.CrackingTheCodingInterview.problems;
 
 import java.util.Arrays;
 import java.util.HashMap;

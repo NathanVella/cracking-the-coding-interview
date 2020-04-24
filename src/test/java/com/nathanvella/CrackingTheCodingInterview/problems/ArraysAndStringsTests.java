@@ -1,4 +1,4 @@
-package com.nathanvella.CrackingTheCodingInterview.modules;
+package com.nathanvella.CrackingTheCodingInterview.problems;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Disabled;

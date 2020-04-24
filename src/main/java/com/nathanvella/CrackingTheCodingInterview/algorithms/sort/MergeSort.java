@@ -2,16 +2,19 @@ package com.nathanvella.CrackingTheCodingInterview.algorithms.sort;
 
 import java.util.Arrays;
 
+/**
+ * Merge Sort Implementation : O(n log n)
+ */
 public class MergeSort {
 
   public static void main(String[] args) {
     int[] arr = {2, 8, 1, 6, 4, 9, 7, 3, 5};
-    System.out.print("Unsorted:");
+    System.out.print("Unsorted: ");
     System.out.println(Arrays.toString(arr));
 
     mergeSort(arr, arr.length);
 
-    System.out.print("Sorted:  ");
+    System.out.print("Sorted:   ");
     System.out.println(Arrays.toString(arr));
   }
 

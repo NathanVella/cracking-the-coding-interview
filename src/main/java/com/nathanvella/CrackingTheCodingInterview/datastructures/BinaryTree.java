@@ -81,7 +81,8 @@ public class BinaryTree {
         : findSmallestValue(root.left);
   }
 
-  // Depth-First Search
+  // Depth-First Search: in-order, pre-order, post-order
+  // output: 3 4 5 6 7 8 9
   public void traverseInOrder(Node node) {
     if (node != null) {
       traverseInOrder(node.left);;
@@ -89,7 +90,7 @@ public class BinaryTree {
       traverseInOrder(node.right);
     }
   }
-
+  // output: 6 4 3 5 8 7 9
   public void traversePreOrder(Node node) {
     if (node != null) {
       visit(node.value);
@@ -98,6 +99,7 @@ public class BinaryTree {
     }
   }
 
+  // output: 3 5 4 7 9 8 6
   public void traversePostOrder(Node node) {
     if (node != null) {
       traversePostOrder(node.left);
@@ -107,6 +109,7 @@ public class BinaryTree {
   }
 
   // Breadth-First Search
+  // output: 6 4 8 3 5 7 9
   public void traverseLevelOrder() {
     if (root == null)
       return;
@@ -123,7 +126,6 @@ public class BinaryTree {
       if (node.right != null)
         nodes.add(node.right);
     }
-
   }
 
   private void visit(int value) {

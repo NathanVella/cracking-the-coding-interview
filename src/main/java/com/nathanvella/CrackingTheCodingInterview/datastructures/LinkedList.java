@@ -29,7 +29,7 @@ public class LinkedList<AnyType> implements Iterable<AnyType> {
    * Inserts a new node at the beginning of this list.
    */
   public void addFirst(AnyType item) {
-    head = new Node<AnyType>(item, head);
+    head = new Node<>(item, head);
   }
 
   /**
@@ -64,7 +64,7 @@ public class LinkedList<AnyType> implements Iterable<AnyType> {
         tmp = tmp.next;
       }
 
-      tmp.next = new Node<AnyType>(item, null);
+      tmp.next = new Node<>(item, null);
     }
   }
 
@@ -128,9 +128,9 @@ public class LinkedList<AnyType> implements Iterable<AnyType> {
    * Returns a string representation
    */
   public String toString() {
-    StringBuffer result = new StringBuffer();
+    StringBuilder result = new StringBuilder();
     for (Object x : this) {
-      result.append(x + " ");
+      result.append(x).append(" ");
     }
 
     return result.toString();
@@ -147,7 +147,7 @@ public class LinkedList<AnyType> implements Iterable<AnyType> {
     }
 
     if (tmp != null) {
-      tmp.next = new Node<AnyType>(toInsert, tmp.next);
+      tmp.next = new Node<>(toInsert, tmp.next);
     }
   }
 
@@ -173,7 +173,7 @@ public class LinkedList<AnyType> implements Iterable<AnyType> {
     }
     //insert between cur and prev
     if (cur != null) {
-      prev.next = new Node<AnyType>(toInsert, cur);
+      prev.next = new Node<>(toInsert, cur);
     }
   }
 
@@ -210,7 +210,7 @@ public class LinkedList<AnyType> implements Iterable<AnyType> {
    * Returns a deep copy of the list Complexity: O(n^2)
    */
   public LinkedList<AnyType> copy1() {
-    LinkedList<AnyType> twin = new LinkedList<AnyType>();
+    LinkedList<AnyType> twin = new LinkedList<>();
     Node<AnyType> tmp = head;
     while (tmp != null) {
       twin.addLast(tmp.data);
@@ -224,7 +224,7 @@ public class LinkedList<AnyType> implements Iterable<AnyType> {
    * Returns a deep copy of the list Complexity: O(n)
    */
   public LinkedList<AnyType> copy2() {
-    LinkedList<AnyType> twin = new LinkedList<AnyType>();
+    LinkedList<AnyType> twin = new LinkedList<>();
     Node<AnyType> tmp = head;
     while (tmp != null) {
       twin.addFirst(tmp.data);
@@ -235,36 +235,36 @@ public class LinkedList<AnyType> implements Iterable<AnyType> {
   }
 
   /**
+   * Returns a deep copy of the immutable list It uses a tail reference. Complexity: O(n)
+   */
+  public LinkedList<AnyType> copy3() {
+    LinkedList<AnyType> twin = new LinkedList<>();
+    Node<AnyType> tmp = head;
+    if (head == null) {
+      return null;
+    }
+    twin.head = new Node<>(head.data, null);
+    Node<AnyType> tmpTwin = twin.head;
+    while (tmp.next != null) {
+      tmp = tmp.next;
+      tmpTwin.next = new Node<>(tmp.data, null);
+      tmpTwin = tmpTwin.next;
+    }
+
+    return twin;
+  }
+
+  /**
    * Reverses the list Complexity: O(n)
    */
   public LinkedList<AnyType> reverse() {
-    LinkedList<AnyType> list = new LinkedList<AnyType>();
+    LinkedList<AnyType> list = new LinkedList<>();
     Node<AnyType> tmp = head;
     while (tmp != null) {
       list.addFirst(tmp.data);
       tmp = tmp.next;
     }
     return list;
-  }
-
-  /**
-   * Returns a deep copy of the immutable list It uses a tail reference. Complexity: O(n)
-   */
-  public LinkedList<AnyType> copy3() {
-    LinkedList<AnyType> twin = new LinkedList<AnyType>();
-    Node<AnyType> tmp = head;
-    if (head == null) {
-      return null;
-    }
-    twin.head = new Node<AnyType>(head.data, null);
-    Node<AnyType> tmpTwin = twin.head;
-    while (tmp.next != null) {
-      tmp = tmp.next;
-      tmpTwin.next = new Node<AnyType>(tmp.data, null);
-      tmpTwin = tmpTwin.next;
-    }
-
-    return twin;
   }
 
   /*******************************************************
@@ -315,18 +315,19 @@ public class LinkedList<AnyType> implements Iterable<AnyType> {
     }
   }
 
-
   /*****   Include the main() for testing and debugging  *****/
   public static void main(String[] args) {
-    LinkedList<String> list = new LinkedList<String>();
+    LinkedList<String> list = new LinkedList<>();
     list.addFirst("p");
     list.addFirst("a");
     list.addFirst("e");
     list.addFirst("h");
     System.out.println(list);
 
-    LinkedList<String> twin = list.copy3();
-    System.out.println(twin);
+    LinkedList<String> twin1 = list.copy1();
+    LinkedList<String> twin2 = list.copy2();
+    LinkedList<String> twin3 = list.copy3();
+    System.out.println(twin3);
 
     System.out.println(list.get(0));
 //		System.out.println(list.get(4));   //exception

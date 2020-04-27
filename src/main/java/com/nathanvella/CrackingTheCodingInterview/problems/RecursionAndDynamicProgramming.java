@@ -2,6 +2,7 @@ package com.nathanvella.CrackingTheCodingInterview.problems;
 
 public class RecursionAndDynamicProgramming {
 
+  // Common Recursive Algorithms ---------------------------------------------------
   // Fibonacci Sequence
   public int fib(int n) {
     if (n <= 1) {
@@ -29,5 +30,7 @@ public class RecursionAndDynamicProgramming {
       towersOfHanoi(n - 1, mid, from, to);
     }
   }
+  // -------------------------------------------------------------------------------
+
 
 }

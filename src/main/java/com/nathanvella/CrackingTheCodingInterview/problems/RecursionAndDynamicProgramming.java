@@ -19,4 +19,15 @@ public class RecursionAndDynamicProgramming {
     }
   }
 
+  // Towers of Hanoi
+  public void towersOfHanoi(int n, char from, char mid, char to) {
+    if (n == 1) {
+      System.out.println(String.format("Disk 1 from %s to %s.", from, to));
+    } else {
+      towersOfHanoi(n - 1, from, to, mid);
+      System.out.println(String.format("Disk %s from %s to %s", n, from, to));
+      towersOfHanoi(n - 1, mid, from, to);
+    }
+  }
+
 }

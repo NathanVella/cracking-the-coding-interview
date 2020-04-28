@@ -3,10 +3,6 @@ package com.nathanvella.CrackingTheCodingInterview.datastructures;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
-/***************************************************************************
- * A Linked List class with a private static inner Node class.
- *****************************************************************************/
-
 public class LinkedList<AnyType> implements Iterable<AnyType> {
 
   private Node<AnyType> head;
@@ -267,9 +263,9 @@ public class LinkedList<AnyType> implements Iterable<AnyType> {
     return list;
   }
 
-  /*******************************************************
-   *  The Node class
-   ********************************************************/
+  /**
+   * ** The Node Class **
+   */
   private static class Node<AnyType> {
 
     private AnyType data;
@@ -281,10 +277,9 @@ public class LinkedList<AnyType> implements Iterable<AnyType> {
     }
   }
 
-  /*******************************************************
-   *  The Iterator class
-   ********************************************************/
-
+  /**
+   * ** The Iterator Class **
+   */
   public Iterator<AnyType> iterator() {
     return new LinkedListIterator();
   }

@@ -82,9 +82,9 @@ public class ArraysAndStrings {
 
   /**
    * Palindrome Permutation
-   * Given a string, write a function to check if it is a
-   * permutation of a palindrome. A palindrome is a word or phrase that is
-   * the same forwards and backwards. A permutation is a rearrangement of letters.
+   * Given a string, write a function to check if it is a permutation of a palindrome.
+   * A palindrome is a word or phrase that is the same forwards and backwards.
+   * A permutation is a rearrangement of letters.
    * The palindrome does not need to be limited to just dictionary words.
    *
    * EXAMPLE
@@ -92,7 +92,6 @@ public class ArraysAndStrings {
    * Output:  True (permutations: "taco cat", "atco cta", etc.)
    */
   public boolean palindromePermutation(String s) {
-
 
     return true;
   }
@@ -126,8 +125,8 @@ public class ArraysAndStrings {
 
   /**
    * String Compression
-   * Implement a method to perform basic string compression using the counts of repeated
-   * characters. If the "compressed" string would not become smaller than the original
+   * Implement a method to perform basic string compression using the counts of repeated characters.
+   * If the "compressed" string would not become smaller than the original
    * string,your method should return the original string. You can assume the string
    * has only uppercase and lowercase letters (a - z).
    *

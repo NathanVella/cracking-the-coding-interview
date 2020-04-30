@@ -81,6 +81,13 @@ public class BinaryTree {
         : findSmallestValue(root.left);
   }
 
+  /* Created tree
+          (6)
+         /   \
+       (4)   (8)
+      /  \   /  \
+    (3) (5) (7) (9) */
+
   // Depth-First Search: in-order, pre-order, post-order
   // output: 3 4 5 6 7 8 9
   public void traverseInOrder(Node node) {

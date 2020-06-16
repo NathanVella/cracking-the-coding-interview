@@ -50,13 +50,16 @@ public class ArraysAndStringsTests {
   }
 
   @Test
-  @Disabled
   void palindromePermutation() {
     Assertions.assertTrue(arraysAndStrings.palindromePermutation(""));
     Assertions.assertTrue(arraysAndStrings.palindromePermutation(" "));
     Assertions.assertTrue(arraysAndStrings.palindromePermutation("Taco Cat"));
     Assertions.assertTrue(arraysAndStrings.palindromePermutation("Tact Coa"));
     Assertions.assertTrue(arraysAndStrings.palindromePermutation("atco cta"));
+
+    Assertions.assertFalse(arraysAndStrings.palindromePermutation("nathan"));
+    Assertions.assertFalse(arraysAndStrings.palindromePermutation("assert false"));
+    Assertions.assertFalse(arraysAndStrings.palindromePermutation("not a palindrome permutation"));
   }
 
   @Test
@@ -65,6 +68,7 @@ public class ArraysAndStringsTests {
     Assertions.assertTrue(arraysAndStrings.oneAway("pale", "ple"));
     Assertions.assertTrue(arraysAndStrings.oneAway("pales", "pale"));
     Assertions.assertTrue(arraysAndStrings.oneAway("pale", "bale"));
+
     Assertions.assertFalse(arraysAndStrings.oneAway("pale", "bake"));
   }
 

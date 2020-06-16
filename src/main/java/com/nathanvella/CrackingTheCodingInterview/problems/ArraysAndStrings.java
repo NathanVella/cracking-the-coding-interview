@@ -92,26 +92,39 @@ public class ArraysAndStrings {
    * Output:  True (permutations: "taco cat", "atco cta", etc.)
    */
   public boolean palindromePermutation(String s) {
-
-    return true;
+    int oddCount = 0;
+    int[] table = new int[Character.getNumericValue('z') -
+        Character.getNumericValue('a') + 1];
+    for (char c : s.toCharArray()) {
+      int x = getCharNumber(c);
+      if (x != -1) {
+        table[x]++;
+        if (table[x] % 2 == 1) {
+          oddCount++;
+        } else {
+          oddCount--;
+        }
+      }
+    }
+    return oddCount <= 1;
   }
 
-//  Map<Character, Integer> map = new HashMap<>();
-//  char[] str = s.toLowerCase().toCharArray();
-//    for(char c : str) {
-//    if (!map.containsKey(c)) {
-//      map.put(c, 1);
-//    } else {
-//      map.put(c, map.get(c) + 1);
-//    }
-//  }
+  public int getCharNumber(Character c) {
+    int a = Character.getNumericValue('a');
+    int z = Character.getNumericValue('z');
+    int val = Character.getNumericValue(c);
+    if (a < val && val < z) {
+      return val - a;
+    }
+    return -1;
+  }
 
   /**
    * One Away
    * There are three types of edits that can be performed on strings:
-   *     insert a character, remove a character, replace a character. Given two
-   * strings, write a function to check if they are one edit (or zero edits) away.
-
+   *     insert a character, remove a character, replace a character.
+   * Given two strings, write a function to check if they are one edit (or zero edits) away.
+   *
    * EXAMPLE
    * pale, ple    -> true
    * pales, pale  -> true

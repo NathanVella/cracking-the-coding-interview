@@ -63,20 +63,27 @@ public class ArraysAndStringsTests {
   }
 
   @Test
-  @Disabled
-  void oneAway() {
-    Assertions.assertTrue(arraysAndStrings.oneAway("pale", "ple"));
-    Assertions.assertTrue(arraysAndStrings.oneAway("pales", "pale"));
-    Assertions.assertTrue(arraysAndStrings.oneAway("pale", "bale"));
+  void oneEditAway() {
+    Assertions.assertTrue(arraysAndStrings.oneEditAway("pale", "ple"));
+    Assertions.assertTrue(arraysAndStrings.oneEditAway("pales", "pale"));
+    Assertions.assertTrue(arraysAndStrings.oneEditAway("pale", "bale"));
 
-    Assertions.assertFalse(arraysAndStrings.oneAway("pale", "bake"));
+    Assertions.assertFalse(arraysAndStrings.oneEditAway("pale", "bake"));
+  }
+
+  @Test
+  void oneEditAwayEnhanced() {
+    Assertions.assertTrue(arraysAndStrings.oneEditAwayEnhanced("pale", "ple"));
+    Assertions.assertTrue(arraysAndStrings.oneEditAwayEnhanced("pales", "pale"));
+    Assertions.assertTrue(arraysAndStrings.oneEditAwayEnhanced("pale", "bale"));
+
+    Assertions.assertFalse(arraysAndStrings.oneEditAwayEnhanced("pale", "bake"));
   }
 
   @Test
   @Disabled
   void stringCompression() {
-    Assertions.assertEquals("a2b1c5a3",
-        arraysAndStrings.stringCompression("aabcccccaaa"));
+    Assertions.assertEquals("a2b1c5a3", arraysAndStrings.stringCompression("aabcccccaaa"));
   }
 
   @Test

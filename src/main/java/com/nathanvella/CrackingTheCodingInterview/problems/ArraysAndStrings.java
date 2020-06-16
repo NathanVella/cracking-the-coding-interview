@@ -93,7 +93,8 @@ public class ArraysAndStrings {
    */
   public boolean palindromePermutation(String s) {
     int oddCount = 0;
-    int[] table = new int[Character.getNumericValue('z') -
+    int[] table = new int[
+        Character.getNumericValue('z') -
         Character.getNumericValue('a') + 1];
     for (char c : s.toCharArray()) {
       int x = getCharNumber(c);
@@ -131,8 +132,69 @@ public class ArraysAndStrings {
    * pale, bale   -> true
    * pale, bake   -> false
    */
-  public boolean oneAway(String s1, String s2) {
+  public boolean oneEditAway(String first, String second) {
+    if (first.length() == second.length()) {
+      return oneEditReplace(first, second);
+    } else if (first.length() + 1 == second.length()) {
+      return oneEditInsert(first, second);
+    } else if (first.length() - 1 == second.length()) {
+      return oneEditInsert(second, first);
+    }
+    return false;
+  }
 
+  public boolean oneEditReplace(String s1, String s2) {
+    boolean foundDifference = false;
+    for (int i = 0; i < s1.length(); i++) {
+      if (s1.charAt(i) != s2.charAt(i)) {
+        if (foundDifference) {
+          return false;
+        }
+        foundDifference = true;
+      }
+    }
+    return true;
+  }
+
+  public boolean oneEditInsert(String s1, String s2) {
+    int i1 = 0;
+    int i2 = 0;
+    while (i1 < s1.length() && i2 < s2.length()) {
+      if (s1.charAt(i1) != s2.charAt(i2)) {
+        if (i1 != i2) {
+          return false;
+        }
+        i2++;
+      } else {
+        i1++;
+        i2++;
+      }
+    }
+    return true;
+  }
+
+  public boolean oneEditAwayEnhanced(String first, String second) {
+    if (Math.abs(first.length() - second.length()) > 2) return false;
+
+    String s1 = first.length() < second.length() ? first : second;
+    String s2 = first.length() < second.length() ? second : first;
+
+    int i1 = 0;
+    int i2 = 0;
+
+    boolean foundDifference = false;
+    while (i1 < s1.length() && i2 < s2.length()) {
+      if (s1.charAt(i1) != s2.charAt(i2)) {
+        if (foundDifference) return false;
+        foundDifference = true;
+        if (s1.length() == s2.length()) {
+          i1++;
+        }
+      } else {
+        i1++;
+      }
+      i2++;
+    }
     return true;
   }
 

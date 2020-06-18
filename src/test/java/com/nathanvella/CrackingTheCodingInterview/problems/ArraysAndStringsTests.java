@@ -81,9 +81,11 @@ public class ArraysAndStringsTests {
   }
 
   @Test
-  @Disabled
   void stringCompression() {
     Assertions.assertEquals("a2b1c5a3", arraysAndStrings.stringCompression("aabcccccaaa"));
+    Assertions.assertEquals("nathan", arraysAndStrings.stringCompression("nathan"));
+    Assertions.assertEquals("", arraysAndStrings.stringCompression(""));
+    Assertions.assertEquals("a10", arraysAndStrings.stringCompression("aaaaaaaaaa"));
   }
 
   @Test

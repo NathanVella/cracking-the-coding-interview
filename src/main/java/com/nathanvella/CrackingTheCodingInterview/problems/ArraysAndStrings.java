@@ -143,7 +143,7 @@ public class ArraysAndStrings {
     return false;
   }
 
-  public boolean oneEditReplace(String s1, String s2) {
+  private boolean oneEditReplace(String s1, String s2) {
     boolean foundDifference = false;
     for (int i = 0; i < s1.length(); i++) {
       if (s1.charAt(i) != s2.charAt(i)) {
@@ -156,7 +156,7 @@ public class ArraysAndStrings {
     return true;
   }
 
-  public boolean oneEditInsert(String s1, String s2) {
+  private boolean oneEditInsert(String s1, String s2) {
     int i1 = 0;
     int i2 = 0;
     while (i1 < s1.length() && i2 < s2.length()) {
@@ -174,7 +174,7 @@ public class ArraysAndStrings {
   }
 
   public boolean oneEditAwayEnhanced(String first, String second) {
-    if (Math.abs(first.length() - second.length()) > 2) return false;
+    if (Math.abs(first.length() - second.length()) > 1) return false;
 
     String s1 = first.length() < second.length() ? first : second;
     String s2 = first.length() < second.length() ? second : first;
@@ -209,7 +209,34 @@ public class ArraysAndStrings {
    * aabcccccaaa  -> a2b1c5a3
    */
   public String stringCompression(String s) {
-    return "";
+    int finalLength = countCompression(s);
+    if (finalLength >= s.length()) return s;
+
+    StringBuilder compressed = new StringBuilder();
+    int countConsecutive = 0;
+    for (int i = 0; i < s.length(); i++) {
+      countConsecutive++;
+      if (i + 1 >= s.length() || s.charAt(i) != s.charAt(i + 1)) {
+        compressed.append(s.charAt(i));
+        compressed.append(countConsecutive);
+        countConsecutive = 0;
+      }
+    }
+    return compressed.toString();
+  }
+
+  private int countCompression(String s) {
+    int compressedLength = 0;
+    int countConsecutive = 0;
+
+    for (int i = 0; i < s.length(); i++) {
+      countConsecutive++;
+      if (i + 1 >= s.length() || s.charAt(i) != s.charAt(i + 1)) {
+        compressedLength += 1 + String.valueOf(countConsecutive).length();
+        countConsecutive = 0;
+      }
+    }
+    return compressedLength;
   }
 
   /**

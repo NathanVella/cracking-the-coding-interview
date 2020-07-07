@@ -1,5 +1,6 @@
 package com.nathanvella.CrackingTheCodingInterview.problems;
 
+import java.util.Arrays;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
@@ -89,9 +90,48 @@ public class ArraysAndStringsTests {
   }
 
   @Test
-  @Disabled
   void rotateMatrix() {
+    int[][] twoByTwo = {
+        {0, 1},
+        {2, 3}};
 
+    int[][] twoByTwoRotated = {
+        {2, 0},
+        {3, 1}};
+
+    int[][] threeByThree = {
+        {0, 1, 2},
+        {3, 4, 5},
+        {6, 7, 8}};
+
+    int[][] threeByThreeRotated = {
+        {6, 3, 0},
+        {7, 4, 1},
+        {8, 5, 2}};
+
+    int[][] fourByFour = {
+        {0, 1, 2, 3},
+        {4, 5, 6, 7},
+        {8, 9, 10, 11},
+        {12, 13, 14, 15}};
+
+    int[][] fourByFourRotated = {
+        {12, 8, 4, 0},
+        {13, 9, 5, 1},
+        {14, 10, 6, 2},
+        {15, 11, 7, 3}};
+
+    Assertions.assertEquals(
+        Arrays.deepToString(twoByTwoRotated),
+        Arrays.deepToString(arraysAndStrings.rotateMatrix(twoByTwo)));
+
+    Assertions.assertEquals(
+        Arrays.deepToString(threeByThreeRotated),
+        Arrays.deepToString(arraysAndStrings.rotateMatrix(threeByThree)));
+
+    Assertions.assertEquals(
+        Arrays.deepToString(fourByFourRotated),
+        Arrays.deepToString(arraysAndStrings.rotateMatrix(fourByFour)));
   }
 
   @Test

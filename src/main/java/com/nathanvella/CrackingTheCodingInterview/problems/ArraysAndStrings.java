@@ -279,8 +279,93 @@ public class ArraysAndStrings {
    * Write an algorithm such that if an element in an MxN matrix is 0,
    * its entire row and column are set to 0.
    */
-  public void zeroMatrix() {
+  public int[][] zeroMatrix(int[][] matrix) {
+    boolean[] row = new boolean[matrix.length];
+    boolean[] column = new boolean[matrix[0].length];
 
+    // Store row and column index with value 0
+    for (int i = 0; i < matrix.length; i++) {
+      for (int j = 0; j < matrix[i].length; j++) {
+        if (matrix[i][j] == 0) {
+          row[i] = true;
+          column[j] = true;
+        }
+      }
+    }
+
+    // Nullify rows
+    for (int i = 0; i < row.length; i++) {
+      if (row[i]) nullifyRow(matrix, i);
+    }
+
+    // Nullify columns
+    for (int j = 0; j < column.length; j++) {
+      if (column[j]) nullifyCol(matrix, j);
+    }
+
+    return matrix;
+  }
+
+  public int[][] zeroMatrixEnhanced(int[][] matrix) {
+    boolean rowHasZero = false;
+    boolean colHasZero = false;
+
+    // Check if first row has zero
+    for (int i = 0; i < matrix[0].length; i++) {
+      if (matrix[0][i] == 0) {
+        rowHasZero = true;
+        break;
+      }
+    }
+    // Check if first column has zero
+    for (int i = 0; i < matrix.length; i++) {
+      if (matrix[i][0] == 0) {
+        colHasZero = true;
+        break;
+      }
+    }
+
+    // Check for zeros in the rest of the array
+    for (int i = 1; i < matrix.length; i++) {
+      for (int j = 1; j < matrix[0].length; j++) {
+        if (matrix[i][j] == 0) {
+          matrix[i][0] = 0;
+          matrix[0][j] = 0;
+        }
+      }
+    }
+
+    // Nullify rows based on values in the first column
+    for (int i = 1; i < matrix.length; i++) {
+      if (matrix[i][0] == 0) nullifyRow(matrix, i);
+    }
+
+    // Nullify columns based on values in first row
+    for (int i = 1; i < matrix[0].length; i++) {
+      if (matrix[0][i] == 0) nullifyCol(matrix, i);
+    }
+
+    // Nullify first row
+    if (rowHasZero) nullifyRow(matrix, 0);
+
+    // Nullify first column
+    if (colHasZero) nullifyCol(matrix, 0);
+
+    return matrix;
+  }
+
+  private int[][] nullifyRow(int[][] matrix, int row) {
+    for (int i = 0; i < matrix[0].length; i++) {
+      matrix[row][i] = 0;
+    }
+    return matrix;
+  }
+
+  private int[][] nullifyCol(int[][] matrix, int col) {
+    for (int i = 0; i < matrix.length; i++) {
+      matrix[i][col] = 0;
+    }
+    return matrix;
   }
 
   /**
@@ -290,7 +375,24 @@ public class ArraysAndStrings {
    * s1 using only one call to isSubstring.
    * (e.g.,"waterbottle" is a rotation of "erbottlewat").
    */
+
+  // s1 = xy = waterbottle
+  // x = wat
+  // y = erbottle
+  // s2 = yx = erbottlewat
+
+  public boolean isRotation(String s1, String s2) {
+    int len = s1.length();
+    // Check that s1 and s2 are equal length and not empty
+    if (len == s2.length() && len > 0) {
+      // Concatenate s1 and s1 within the new buffer
+      String s1s1 = s1 + s1;
+      return isSubstring(s1s1, s2);
+    }
+    return false;
+  }
+
   public boolean isSubstring(String s1, String s2) {
-    return true;
+    return s1.contains(s2);
   }
 }

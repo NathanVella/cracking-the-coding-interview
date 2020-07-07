@@ -135,14 +135,101 @@ public class ArraysAndStringsTests {
   }
 
   @Test
-  @Disabled
   void zeroMatrix() {
+    int[][] twoByTwo = {
+        {0, 1},
+        {2, 3}};
 
+    int[][] twoByTwoNulled = {
+        {0, 0},
+        {0, 3}};
+
+    int[][] threeByThree = {
+        {1, 0, 2},
+        {3, 4, 5},
+        {6, 7, 8}};
+
+    int[][] threeByThreeNulled = {
+        {0, 0, 0},
+        {3, 0, 5},
+        {6, 0, 8}};
+
+    int[][] fourByFour = {
+        {1, 1, 2, 3},
+        {4, 5, 6, 7},
+        {8, 9, 0, 11},
+        {12, 13, 14, 15}};
+
+    int[][] fourByFourNulled = {
+        {1, 1, 0, 3},
+        {4, 5, 0, 7},
+        {0, 0, 0, 0},
+        {12, 13, 0, 15}};
+
+    Assertions.assertEquals(
+        Arrays.deepToString(twoByTwoNulled),
+        Arrays.deepToString(arraysAndStrings.zeroMatrix(twoByTwo)));
+
+    Assertions.assertEquals(
+        Arrays.deepToString(threeByThreeNulled),
+        Arrays.deepToString(arraysAndStrings.zeroMatrix(threeByThree)));
+
+    Assertions.assertEquals(
+        Arrays.deepToString(fourByFourNulled),
+        Arrays.deepToString(arraysAndStrings.zeroMatrix(fourByFour)));
   }
 
   @Test
-  @Disabled
+  void zeroMatrixEnhanced() {
+    int[][] twoByTwo = {
+        {0, 1},
+        {2, 3}};
+
+    int[][] twoByTwoNulled = {
+        {0, 0},
+        {0, 3}};
+
+    int[][] threeByThree = {
+        {1, 0, 2},
+        {3, 4, 5},
+        {6, 7, 8}};
+
+    int[][] threeByThreeNulled = {
+        {0, 0, 0},
+        {3, 0, 5},
+        {6, 0, 8}};
+
+    int[][] fourByFour = {
+        {1, 1, 2, 3},
+        {4, 5, 6, 7},
+        {8, 9, 0, 11},
+        {12, 13, 14, 15}};
+
+    int[][] fourByFourNulled = {
+        {1, 1, 0, 3},
+        {4, 5, 0, 7},
+        {0, 0, 0, 0},
+        {12, 13, 0, 15}};
+
+    Assertions.assertEquals(
+        Arrays.deepToString(twoByTwoNulled),
+        Arrays.deepToString(arraysAndStrings.zeroMatrixEnhanced(twoByTwo)));
+
+    Assertions.assertEquals(
+        Arrays.deepToString(threeByThreeNulled),
+        Arrays.deepToString(arraysAndStrings.zeroMatrixEnhanced(threeByThree)));
+
+    Assertions.assertEquals(
+        Arrays.deepToString(fourByFourNulled),
+        Arrays.deepToString(arraysAndStrings.zeroMatrixEnhanced(fourByFour)));
+  }
+
+  @Test
   void stringRotation() {
-    Assertions.assertTrue(arraysAndStrings.isSubstring("waterbottle", "erbottlewat"));
+    Assertions.assertTrue(arraysAndStrings.isRotation("waterbottle", "erbottlewat"));
+    Assertions.assertTrue(arraysAndStrings.isRotation("nathanvella", "anvellanath"));
+
+    Assertions.assertFalse(arraysAndStrings.isRotation("abcdef", "hij"));
+    Assertions.assertFalse(arraysAndStrings.isRotation("a", ""));
   }
 }
